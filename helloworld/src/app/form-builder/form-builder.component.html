@@ -1,0 +1,108 @@
+<div class="container">
+    <form
+        [formGroup]="dadosPessoais"
+        (ngSubmit)="onSubmit()">
+        <div
+            class="form-group">
+            <label>Primeiro
+                Nome</label>
+            <input type="nome"
+                class="form-control"
+                placeholder="Nome"
+                formControlName="primeiroNome">
+            <br>
+            <div *ngIf="f.primeiroNome.errors && (f.primeiroNome.dirty || f.primeiroNome.touched)"
+                class="alert alert-danger">
+                <div
+                    *ngIf="f.primeiroNome.errors.required">
+                    O nome e
+                    obrigatorio
+                </div>
+            </div>
+        </div>
+        <div
+            class="form-group">
+            <label
+                for="ultimo-nome">Ultimo
+                Nome</label>
+            <input type="name"
+                class="form-control"
+                placeholder="Ultimo Nome"
+                formControlName="ultimoNome">
+        </div>
+
+        <div
+            class="form-group">
+            <label
+                for="email">Email</label>
+            <input
+                type="email"
+                class="form-control"
+                placeholder="Email"
+                formControlName="email">
+                <div
+                *ngIf="f.email.errors && (f.email.dirty || f.email.touched)"
+                class="alert alert-danger">
+                    <p
+                        *ngIf="f.email.errors.required">
+                        Email
+                        Obrigatorio
+                    </p>
+                    <p
+                        *ngIf="!f.email.errors.dominio">
+                       Dominio invalido
+                    </p>
+                </div>    
+        </div>
+        <div
+            formGroupName="endereco">
+            <div
+                class="form-group">
+                <label
+                    for="">Pais</label>
+                <input
+                    type="text"
+                    id="pais"
+                    formControlName="pais"
+                    class="form-control">
+            </div>
+            <div
+                class="form-group">
+                <label
+                    for="">Cidade</label>
+                <input
+                    type="text"
+                    id="cidade"
+                    formControlName="cidade"
+                    class="form-control">
+            </div>
+            <div
+                class="form-group">
+                <label
+                    for="">Municipio</label>
+                <input
+                    type="text"
+                    id="municipio"
+                    formControlName="municipio"
+                    class="form-control">
+            </div>
+            <div
+                class="form-group">
+                <label
+                    for="">Rua</label>
+                <input
+                    type="text"
+                    id="rua"
+                    formControlName="rua"
+                    class="form-control">
+            </div>
+
+
+        </div>
+
+        <button
+            [disabled]="!dadosPessoais.valid"
+            type="submit"
+            class="btn btn-primary">Submit</button>
+    </form>
+</div>

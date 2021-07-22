@@ -1,0 +1,69 @@
+<div class="container">
+    <table class="table">
+        <thead> 
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NOME</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">IDADE</th>
+            <th scope="col">SEXO</th>
+            <th scope="col">AÇÃO</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let pessoa of pessoas">
+            <th scope="row">{{pessoa.id}}</th>
+            <td>{{pessoa.nome}}</td>
+            <td>{{pessoa.email}}</td>
+            <td>{{pessoa.idade}}</td>
+            <td>{{pessoa.sexo}}</td>
+            <td>
+                <button type="button" class="btn btn-primary" style="width: 100px; height: 40px; margin-right: 0px; margin-left: 0px;" (click)="fillinputEdit(pessoa)">Editar</button>
+            </td>
+            <td>
+                <button (click)="deletarPessoa(pessoa.id)" type="button" class="btn btn-outline-danger" style="width: 100px; height: 40px; margin-right: 0px; margin-left: 0px;" >Remover</button>
+        
+            </td>
+              
+          </tr>
+          
+        </tbody>
+      </table>
+      
+        <button class="btn btn-primary btn-lg" (click)="addPessoa()">  Adicionar pessoa</button>
+     <div *ngIf="isFormVisible">
+        <h2>Nova Pessoa</h2>
+        <form #pessoaForm="ngForm">
+            <div  class="form-group">
+                <label for="name">Nome</label>
+                <input type="text" class="form-control" name="nome" required minlength="4" [(ngModel)]="pessoa.nome" #nome="ngModel">
+                <div [hidden]="nome.valid || nome.pristine" class="alert alert-danger">
+                   Nome e obrigatorio
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="idade">Idade</label>
+                <input type="text" class="form-control" name="idade" required [(ngModel)]=pessoa.idade #idade>
+                <div class="alert alert-danger" *ngIf="loginForm.get(name).errors"> </div>
+            </div>
+            <div class="form-group">
+                <label for="sexo">Sexo</label>
+                <input type="text" class="form-control" name="sexo" required  [(ngModel)]=pessoa.sexo #sexo>  
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control" name="email" required  [(ngModel)]=pessoa.email #email="ngModel">  
+          
+            </div>
+        <div >
+            <button type="button" class="btn btn-primary" (click)="savePessoa()">Salvar</button>
+            <button type="button" class="btn btn-outline-danger" (click)="cancel()">Cancelar</button>
+        </div>
+        </form>
+    </div>
+
+    <div>
+        <h2>{{250.0| currency}}</h2>
+      
+    </div>
+</div>

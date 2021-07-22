@@ -1,0 +1,14 @@
+<h1>Formularios Reactivos</h1>
+
+My favor calor: <input type="text" name="formReativo" [formControl]="favorCalor">
+Calor: <br>
+ <input type="text" name="formReativo" [(ngModel)]="estado">
+
+<h1>My heroes</h1>
+
+<div>
+    <label for="">My hero :</label>
+    <input type="text" [formControl]="name"> <br>
+    <span>{{name.value}} is your hero</span> <br>
+    <button (click)="updateName()">Update</button>
+</div>

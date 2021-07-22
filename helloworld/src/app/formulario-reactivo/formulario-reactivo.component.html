@@ -1,0 +1,13 @@
+<form [formGroup]="pessoaForm" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="">Primeiro Nome</label>
+        <input type="text" id="first-name" formControlName="primeiroNome">
+        
+    </div>
+<div>
+     
+    <label for="">Ultimo Nome</label>
+    <input type="text" id="ultimo-nome" formControlName="ultimoNome">
+</div>
+<button type="submit" [disabled]="!pessoaForm.valid" >Submeter</button>
+</form>

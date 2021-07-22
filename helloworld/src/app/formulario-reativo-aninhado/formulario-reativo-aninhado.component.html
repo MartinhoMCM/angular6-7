@@ -1,0 +1,42 @@
+<form [formGroup]="dadosPessoais" (ngSubmit)="onSubmit()">
+    <div>
+        <label for="">Primeiro Nome</label>
+        <input type="text" id="first-name" formControlName="primeiroNome">
+        
+    </div>
+<div>
+     
+    <label for="">Ultimo Nome</label>
+    <input type="text" id="ultimo-nome" formControlName="ultimoNome">
+</div >
+
+<div formGroupName="endereco">
+    <div>
+        <label for="">Pais</label>
+        <input type="text" id="pais" formControlName="pais">
+    </div>
+    <div>
+        <label for="">Cidade</label>
+        <input type="text" id="cidade" formControlName="cidade">
+    </div>
+    <div>
+        <label for="">Municipio</label>
+        <input type="text" id="municipio" formControlName="municipio">
+    </div>
+    <div>
+        <label for="">Rua</label>
+        <input type="text" id="rua" formControlName="rua">
+        </div>
+</div>
+
+<button [disabled]="!dadosPessoais.valid" >Submeter</button>
+
+</form>
+
+<!-- 
+<div >
+    
+
+
+
+ -->

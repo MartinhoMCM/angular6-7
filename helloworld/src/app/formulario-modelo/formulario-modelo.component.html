@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <h1>Formulario Pessoa</h1>
+    <form #pessoaForm="ngForm" (ngSubmit)="onSubmit()">
+        <div  class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" name="nome" required minlength="4" [(ngModel)]="pessoa.nome" #nome="ngModel">
+            <div [hidden]="nome.valid || nome.pristine" class="alert alert-danger">
+               Nome e obrigatorio
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="idade">Idade</label>
+            <input type="text" class="form-control" name="idade" required [(ngModel)]=pessoa.idade #idade>
+        </div>
+        <div class="form-group">
+            <label for="sexo">Sexo</label>
+            <input type="text" class="form-control" name="sexo" required  [(ngModel)]=pessoa.sexo #sexo>  
+        </div>
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" required  [(ngModel)]=pessoa.email #email="ngModel" appDirectivaemail>  
+            <div *ngIf="email.errors?.dominioValido" class="alert alert-danger" >
+                Dominio Invalido
+            </div>
+        
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!pessoaForm.form.valid">Enviar Form</button>
+        <button type="button" class="btn btn-default" (click)="novaPessoa()">Adicionar Pessoa</button>
+    </form>
+    <div></div>
+
+    <div *ngIf="enviado"> 
+        <div class="row">
+            <div class="col-sm-2">Nome</div>
+            <div class="col-sm-8">{{pessoa.nome}}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Sexo</div>
+            <div class="col-sm-8">{{pessoa.sexo}}</div>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">Idade</div>
+            <div class="col-sm-8">{{pessoa.idade}}</div>
+        </div>
+
+
+        <button class="btn btn-default blue" (click)="enviado=false">Editar</button>
+    </div>
+</div>
